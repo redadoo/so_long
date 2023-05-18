@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:42:29 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/18 14:51:13 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/18 15:26:30 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,12 @@ void	null_error(char *message,void *param)
 int	ft_close(void *param)
 {	
 	exit(0);
+}
+
+void check_ber(char *name)
+{
+	if (ft_strnstr(name, ".ber",ft_strlen(name)) != NULL) 
+	{
+		exit(0);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 13:54:23 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/18 15:14:08 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/18 15:25:06 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,5 @@ void		check_wall(char c, int i, int j,t_game game);
 int			ft_close(void *param);
 void		set_hud(t_game game);
 void		ft_update(void *param);
+void		check_ber(char *name);
 #endif
