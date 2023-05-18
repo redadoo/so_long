@@ -14,6 +14,7 @@
 # define SO_LONG_H
 
 # include "gnl/get_next_line.h"
+# include "ft_libft/libft.h"
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -30,11 +31,18 @@ typedef struct s_window {
 	t_vector2	size;
 }	t_screen;
 
+typedef struct s_map {
+	char		**map;
+	int			height;
+	int			width;
+}	t_map;
+
+
 typedef struct s_game{
 	void			*reference;
 	void			*mlx;
 	t_screen		window;
-	char			**map;
+	t_map			map;
 	int				state;
 }	t_game;
 

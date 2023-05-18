@@ -10,24 +10,32 @@
 #                                                                              #
 # **************************************************************************** #
 
+
 NAME = so_long
 
-
-SRC = $(MAIN_SRC) $(SRC_MAP) $(SRC_GAME) $(GNL_SRC) $(UTILIS_SRC)
-
+SRC = $(MAIN_SRC)
 
 MAIN_SRC = *.c
 
 OBJ = *.o
 
-
-FLAGS = -Wall -Wextra -Werror
-LINKS = -lmlx -framework OpenGL -framework AppKit
-
 NONE='\033[0m'
 GREEN='\033[32m'
 GRAY='\033[2;37m'
 CURSIVE='\033[3m'
+
+UNAME_S := $(shell uname -s)
+
+ifeq ($(UNAME_S),Linux)
+LINKS += -Lmlx_linux -lmlx_Linux
+endif
+
+ifeq ($(UNAME_S),MacOs)
+LINKS += -lmlx -framework OpenGL -framework AppKit
+endif
+
+FLAGS = -Wall -Wextra -Werror
+
 
 all: $(NAME)
 
@@ -51,11 +59,11 @@ play0: all
 
 norm:
 	@echo $(GRAY) ""
-	@norminette $(SRC) *.h */*.h
+	@norminette $(SRC) *.c
 	@echo $(NONE) ""
 
 leaks: all
-	@leaks --atExit -- ./$(NAME) Map/map_3.ber
+	@leaks --atExit -- ./$(NAME) Map/map_0.ber
 
 clean:
 	@echo $(CURSIVE)$(GRAY) "     - Removing object files..." $(NONE)

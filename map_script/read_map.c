@@ -11,7 +11,33 @@
 /* ************************************************************************** */
 
 
-#include ""
+#include "../so_long.h"
+
+t_map readmap(void *param, char *file)
+{
+	int				i;
+	int				fd;
+	int				len;
+	char			**map;
+	t_map			game_map;
+
+	map = (char **)ft_calloc((sizeof(char *)), file_linecount(file)+1);
+	if (map == NULL)
+		return (game_map);
+	fd = open(file, O_RDONLY);
+	i = 0;
+	while (i < file_linecount(file))
+	{
+		map[i] = get_next_line(fd);
+		len = ft_strlen(map[i]);
+		i++;
+	}
+	game_map.height = file_linecount(file);
+	game_map.widht =  ft_strlen(map[0]);
+	game_map.map = map;
+	close(fd);
+	return (game_map);
+}
 
 
 int	file_linecount(char *file)
