@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 13:54:23 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/18 15:25:06 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/18 15:28:12 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct s_game{
 	void			*mlx;
 	t_screen		window;
 	t_map			map;
-	int				state;
+	int				step;
 }	t_game;
 
 
