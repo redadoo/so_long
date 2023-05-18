@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:41:42 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/18 14:48:36 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/18 14:51:39 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ void check_wall(char c, int i, int j,t_game game)
 	if (((i == 0) || (i == game.map.height - 1)) && (j < game.map.widht - 1))
 	{
 		if (c != '1')
-			null_error("the map is not surrounded by walls",game.reference);
+			null_error("the map is not surrounded by walls",&game);
 	}
 	if ((j == 0) || (j == game.map.widht - 2))
 	{
 		if (c != '1')
-			null_error("the map is not surrounded by walls",game.reference);
+			null_error("the map is not surrounded by walls",&game);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 13:54:23 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/18 14:48:34 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/18 15:14:08 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_window {
 }	t_screen;
 
 typedef struct s_map {
-	char		**map;
+	char		**matrix;
 	int			height;
 	int			width;
 }	t_map;
@@ -54,5 +54,7 @@ void		null_error(char *message, void *param);
 void		check(t_game game);
 void		check_env(char c,t_game game);
 void		check_wall(char c, int i, int j,t_game game);
-
+int			ft_close(void *param);
+void		set_hud(t_game game);
+void		ft_update(void *param);
 #endif

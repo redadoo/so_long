@@ -6,7 +6,7 @@
 #    By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 13:53:36 by evocatur          #+#    #+#              #
-#    Updated: 2023/05/18 13:54:01 by evocatur         ###   ########.fr        #
+#    Updated: 2023/05/18 15:07:20 by evocatur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,11 +56,6 @@ exe: all
 
 play0: all
 	@./$(NAME) Map/map_0.ber
-
-norm:
-	@echo $(GRAY) ""
-	@norminette $(SRC) *.c
-	@echo $(NONE) ""
 
 leaks: all
 	@leaks --atExit -- ./$(NAME) Map/map_0.ber

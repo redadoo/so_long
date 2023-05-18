@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:01:35 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/18 14:01:49 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/18 15:14:26 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_map readmap(void *param, char *file)
 	}
 	game_map.height = file_linecount(file);
 	game_map.widht =  ft_strlen(map[0]);
-	game_map.map = map;
+	game_map.matrix = map;
 	close(fd);
 	return (game_map);
 }
