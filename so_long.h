@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 13:54:23 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/18 13:59:55 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/18 14:48:34 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,12 @@ typedef struct s_game{
 }	t_game;
 
 
-void	set_game(t_game game, int argc, char **argv);
+void		set_game(t_game game, int argc, char **argv);
+t_map		readmap(void *param, char *file);
+t_screen	ft_new_window(t_program program, int widht, int height, char *name);
+void		null_error(char *message, void *param);
+void		check(t_game game);
+void		check_env(char c,t_game game);
+void		check_wall(char c, int i, int j,t_game game);
 
 #endif
