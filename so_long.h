@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 13:54:23 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/19 18:41:02 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/19 18:47:26 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 #define PLAYER_SPRITE "Sprites/player/player_0.xpm"
 #define WALL "Sprites/wall/wall.xpm"
 #define GRASS "Sprites/title/grass.xpm"
+#define MONEY "Sprites/env/money.xpm"
 
 #define EXIT 53
 #define IMG_SIZE 32
