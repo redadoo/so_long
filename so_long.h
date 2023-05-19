@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 13:54:23 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/19 17:56:02 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/19 18:31:15 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,5 @@ void		printmatrix(char **matrix);
 t_player	init_player(t_game game);
 t_vector2	move_player(t_game *game, int dir);
 int			check_move(t_game *game, int dir);
-int			convert(int dir,int num);
+void		move_sprite(t_game *game,t_vector2 newpos);
 #endif

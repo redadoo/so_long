@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:10:35 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/19 18:14:01 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/19 18:19:54 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,5 @@ int	key_hook(int keycode, void *param)
 		ft_close(param);
 	}
 	move_player(game,keycode);
-	
 	return (0);
 }
