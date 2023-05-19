@@ -6,7 +6,7 @@
 #    By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 13:53:36 by evocatur          #+#    #+#              #
-#    Updated: 2023/05/19 15:03:48 by evocatur         ###   ########.fr        #
+#    Updated: 2023/05/19 15:24:24 by evocatur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,6 +67,15 @@ exe: all
 
 play0: all
 	@./$(NAME) Map/map_0.ber
+
+error : all
+	@./$(NAME) Map/error_map.ber
+
+big : all
+	@./$(NAME) Map/big.ber
+
+big : all
+	@./$(NAME) Map/small.ber
 
 leaks: all
 	@leaks --atExit -- ./$(NAME) map/map_0.ber
