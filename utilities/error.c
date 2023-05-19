@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:42:29 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/18 15:26:30 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/19 14:30:39 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,9 @@ int	ft_close(void *param)
 
 void check_ber(char *name)
 {
-	if (ft_strnstr(name, ".ber",ft_strlen(name)) != NULL) 
+	if (ft_strnstr(name, ".ber",9) != NULL) 
 	{
+		printf("\033[0;31m" " Error\n \n" "\033[0m the extention  of the map is not ber");
 		exit(0);
 	}
 }

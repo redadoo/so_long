@@ -6,16 +6,27 @@
 #    By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 13:53:36 by evocatur          #+#    #+#              #
-#    Updated: 2023/05/18 15:07:20 by evocatur         ###   ########.fr        #
+#    Updated: 2023/05/19 14:20:04 by evocatur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME = so_long
 
-SRC = $(MAIN_SRC)
+SRC = $(UTILITIES_SRC) $(MAP_SRC) $(GAME_SRC)  $(GNL_SRC) $(LIBFT_SRC) $(MAIN_SRC)
 
 MAIN_SRC = *.c
+
+MAP_SRC = map_script/*.c
+
+GAME_SRC = game_script/*.c
+
+GNL_SRC = gnl/*.c
+
+LIBFT_SRC = ft_libft/*.c
+
+UTILITIES_SRC = utilities/error.c
+
 
 OBJ = *.o
 
@@ -30,7 +41,7 @@ ifeq ($(UNAME_S),Linux)
 LINKS += -Lmlx_linux -lmlx_Linux
 endif
 
-ifeq ($(UNAME_S),MacOs)
+ifeq ($(UNAME_S),Darwin)
 LINKS += -lmlx -framework OpenGL -framework AppKit
 endif
 
@@ -58,7 +69,7 @@ play0: all
 	@./$(NAME) Map/map_0.ber
 
 leaks: all
-	@leaks --atExit -- ./$(NAME) Map/map_0.ber
+	@leaks --atExit -- ./$(NAME) map/map_0.ber
 
 clean:
 	@echo $(CURSIVE)$(GRAY) "     - Removing object files..." $(NONE)

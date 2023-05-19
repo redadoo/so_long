@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:41:42 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/18 14:51:39 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/19 14:26:52 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,9 @@ void check(t_game game)
 	int i;
 	int j;
 
-	map = game.map.map;
+	map = game.map.matrix;
 	i = game.map.height;
-	j = game.map.widht;
-
+	j = game.map.width;
 	if (i > j || !map)
 		ft_close(&game);
 	i = 0;
@@ -31,7 +30,7 @@ void check(t_game game)
 	check_env('C', game);
 	while (i < game.map.height)
 	{
-		while (j < game.map.widht)
+		while (j < game.map.width)
 		{
 			check_wall(map[i][j], i, j, game);
 			j++;
@@ -43,12 +42,12 @@ void check(t_game game)
 
 void check_wall(char c, int i, int j,t_game game)
 {
-	if (((i == 0) || (i == game.map.height - 1)) && (j < game.map.widht - 1))
+	if (((i == 0) || (i == game.map.height - 1)) && (j < game.map.width - 1))
 	{
 		if (c != '1')
 			null_error("the map is not surrounded by walls",&game);
 	}
-	if ((j == 0) || (j == game.map.widht - 2))
+	if ((j == 0) || (j == game.map.width - 2))
 	{
 		if (c != '1')
 			null_error("the map is not surrounded by walls",&game);
@@ -62,13 +61,13 @@ void check_env(char c,t_game game)
 	int		count;
 	char 	**map;
 
-	map = game.map.map;
+	map = game.map.matrix;
 	i = 0;
 	j = 0;
 	count = 0;
 	while (i < game.map.height)
 	{
-		while (j < game.map.widht)
+		while (j < game.map.width)
 		{
 			if (map[i][j] == c)
 				count++;

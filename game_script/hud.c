@@ -6,9 +6,11 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:08:26 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/18 15:09:19 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/19 14:18:18 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../so_long.h"
 
 void    set_hud(t_game game)
 {
