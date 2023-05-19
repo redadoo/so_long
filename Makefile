@@ -6,7 +6,7 @@
 #    By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 13:53:36 by evocatur          #+#    #+#              #
-#    Updated: 2023/05/19 15:24:24 by evocatur         ###   ########.fr        #
+#    Updated: 2023/05/19 15:38:55 by evocatur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,6 @@ endif
 
 FLAGS = -Wall -Wextra -Werror
 
-
 all: $(NAME)
 
 $(NAME): $(OBJ)
@@ -73,9 +72,6 @@ error : all
 
 big : all
 	@./$(NAME) Map/big.ber
-
-big : all
-	@./$(NAME) Map/small.ber
 
 leaks: all
 	@leaks --atExit -- ./$(NAME) map/map_0.ber

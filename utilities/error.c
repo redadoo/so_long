@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:42:29 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/19 15:07:15 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/19 16:11:42 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	null_error(char *message, void *param)
 
 	game = (t_game *)param;
 	printf("\033[0;31m" " Error\n %s\n" "\033[0m", message);
+	ft_close(param);
 }
 
 int	ft_close(void *param)

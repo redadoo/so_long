@@ -6,12 +6,13 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:41:42 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/19 15:12:23 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/19 16:10:02 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
+/* check if map inside t_game struct have no error*/
 void	check(t_game game)
 {
 	char	**map;

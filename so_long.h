@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 13:54:23 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/19 15:17:08 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/19 16:15:00 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <mlx.h>
+
+#define PLAYER_SPRITE "Sprites/player/player_0.xpm"
 
 #define EXIT 53
 
@@ -51,6 +53,17 @@ typedef struct s_map {
 	int			width;
 }	t_map;
 
+typedef struct s_sprite {
+	void		*img;
+	void		*b_img;
+	t_vector2	size;
+}	t_sprite;
+
+typedef struct s_player{
+	t_vector2	pos;
+	t_sprite	sprite;
+}	t_player;
+
 typedef struct s_game{
 	void			*reference;
 	void			*mlx;
@@ -59,8 +72,7 @@ typedef struct s_game{
 	int				step;
 }	t_game;
 
-
-void		set_game(t_game game, int argc, char **argv);
+void		run_game(t_game game, int argc, char **argv);
 t_map		readmap(void *param, char *file);
 t_screen	ft_new_window(t_game game, int widht, int height, char *name);
 void		null_error(char *message, void *param);
@@ -72,6 +84,7 @@ void		set_hud(t_game game);
 int			ft_update(void *param);
 void		check_ber(char *name);
 int			key_hook(int keycode,void *param);
-
+void		spawn_map(t_game game);
+void		PrintMatrix(char **matrix);
 
 #endif

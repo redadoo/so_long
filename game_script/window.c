@@ -6,12 +6,13 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:34:49 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/19 15:05:56 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/19 16:03:06 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
+/* create new window */
 t_screen	ft_new_window(t_game game, int widht, int height, char *name)
 {
 	t_screen	window;
