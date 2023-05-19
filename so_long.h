@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 13:54:23 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/19 17:21:37 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/19 17:27:36 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <mlx.h>
-
+ 
 #define PLAYER_SPRITE "Sprites/player/player_0.xpm"
 #define WALL "Sprites/wall/wall.xpm"
 #define GRASS "Sprites/title/grass.xpm"
@@ -92,4 +92,5 @@ void		spawn_map(t_game game);
 void		printmatrix(char **matrix);
 t_player	init_player(t_game game);
 t_vector2	move_player(t_game *game, int dir);
+int			check_move(t_game *game, int dir);
 #endif
