@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 13:54:23 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/19 18:31:15 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/19 18:41:02 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,25 @@ typedef struct s_player{
 	t_sprite	sprite;
 }	t_player;
 
+typedef struct s_coin{
+	t_vector2		pos;
+	t_sprite		sprite;
+	struct s_coin	*next;
+}	t_coin;
+
+typedef struct s_enemy{
+	t_vector2		pos;
+	t_sprite		sprite;
+	struct s_enemy	*next;
+}	t_enemy;
+
 typedef struct s_game{
 	void			*reference;
 	void			*mlx;
 	t_player		player;
 	t_screen		window;
+	t_enemy			enemys;
+	t_coin			coins;
 	t_map			map;
 	int				step;
 }	t_game;
