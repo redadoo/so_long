@@ -6,10 +6,9 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:01:35 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/19 14:24:38 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/19 15:13:46 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../so_long.h"
 
@@ -38,7 +37,7 @@ int	file_linecount(char *file)
 	return (linecount);
 }
 
-t_map readmap(void *param, char *file)
+t_map	readmap(void *param, char *file)
 {
 	int				i;
 	int				fd;
@@ -58,7 +57,7 @@ t_map readmap(void *param, char *file)
 		i++;
 	}
 	game_map.height = file_linecount(file);
-	game_map.width =  ft_strlen(map[0]);
+	game_map.width = ft_strlen(map[0]);
 	game_map.matrix = map;
 	close(fd);
 	return (game_map);

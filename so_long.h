@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 13:54:23 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/19 14:55:22 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/19 15:17:08 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,18 @@
 # include <stdlib.h>
 # include <mlx.h>
 
+#define EXIT 53
+
 #ifdef __linux__
-
-#endif
-
-#ifdef __APPLE__
-	#define UP = 13
-	#define LEFT = 0
-	#define DOWN = 1
-	#define RIGHT = 2
+	#define UP 77
+	#define LEFT 61
+	#define DOWN 73
+	#define RIGHT 64
+#elif __APPLE__
+	#define UP 13
+	#define LEFT 0
+	#define DOWN 1
+	#define RIGHT 2
 #endif
 
 typedef struct s_vector

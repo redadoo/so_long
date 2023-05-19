@@ -6,7 +6,7 @@
 #    By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 13:53:36 by evocatur          #+#    #+#              #
-#    Updated: 2023/05/19 14:20:04 by evocatur         ###   ########.fr        #
+#    Updated: 2023/05/19 15:03:48 by evocatur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,6 +70,9 @@ play0: all
 
 leaks: all
 	@leaks --atExit -- ./$(NAME) map/map_0.ber
+
+norm:
+	@norminette $(SRC)
 
 clean:
 	@echo $(CURSIVE)$(GRAY) "     - Removing object files..." $(NONE)

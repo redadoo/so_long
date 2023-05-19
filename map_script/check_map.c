@@ -6,17 +6,17 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:41:42 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/19 14:26:52 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/19 15:12:23 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void check(t_game game)
+void	check(t_game game)
 {
-	char **map;
-	int i;
-	int j;
+	char	**map;
+	int		i;
+	int		j;
 
 	map = game.map.matrix;
 	i = game.map.height;
@@ -37,29 +37,29 @@ void check(t_game game)
 		}
 		j = 0;
 		i++;
-	} 
+	}
 }
 
-void check_wall(char c, int i, int j,t_game game)
+void	check_wall(char c, int i, int j, t_game game)
 {
 	if (((i == 0) || (i == game.map.height - 1)) && (j < game.map.width - 1))
 	{
 		if (c != '1')
-			null_error("the map is not surrounded by walls",&game);
+			null_error("the map is not surrounded by walls", &game);
 	}
 	if ((j == 0) || (j == game.map.width - 2))
 	{
 		if (c != '1')
-			null_error("the map is not surrounded by walls",&game);
+			null_error("the map is not surrounded by walls", &game);
 	}
 }
 
-void check_env(char c,t_game game)
+void	check_env(char c, t_game game)
 {
-	int 	i;
-	int 	j;
+	int		i;
+	int		j;
 	int		count;
-	char 	**map;
+	char	**map;
 
 	map = game.map.matrix;
 	i = 0;
@@ -75,7 +75,7 @@ void check_env(char c,t_game game)
 		}
 		j = 0;
 		i++;
-	} 
+	}
 	if (count < 1)
-		null_error("The map does not contain at least 1 exit, 1 collectible and 1 starting location.", &game);
+		null_error("Error missing 1 exit or 1 coin or 1 start", &game);
 }
