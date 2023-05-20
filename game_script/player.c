@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:18:22 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/19 18:35:12 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/20 14:22:03 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,11 @@ int check_move(t_game *game, int dir)
 	y = game->player.pos.y;
 	if (dir == UP)
 		y--;
-	if (dir == DOWN)
+	else if (dir == DOWN)
 		y++;
-	if (dir == RIGHT)
+	else if (dir == RIGHT)
 		x++;
-	if (dir == LEFT)
+	else if (dir == LEFT)
 		x--;
 	if (game->map.matrix[y][x] == '1')
 		return (0);
@@ -91,6 +91,7 @@ int check_move(t_game *game, int dir)
 
 void move_sprite(t_game *game,t_vector2 oldpos)
 {
+	game->step += 1;
 	mlx_put_image_to_window(game->mlx, game->window.reference, game->player.sprite.b_img, oldpos.x * IMG_SIZE, oldpos.y  * IMG_SIZE);
 	mlx_put_image_to_window(game->mlx, game->window.reference, game->player.sprite.img,  game->player.pos.x * IMG_SIZE, game->player.pos.y * IMG_SIZE);
 }

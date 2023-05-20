@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 13:54:23 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/19 18:47:26 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/20 14:36:40 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 #define WALL "Sprites/wall/wall.xpm"
 #define GRASS "Sprites/title/grass.xpm"
 #define MONEY "Sprites/env/money.xpm"
+#define BACK "Sprites/env/backstring.xpm"
 
 #define EXIT 53
 #define IMG_SIZE 32
@@ -83,12 +84,13 @@ typedef struct s_enemy{
 typedef struct s_game{
 	void			*reference;
 	void			*mlx;
+	int				step;
 	t_player		player;
 	t_screen		window;
 	t_enemy			enemys;
-	t_coin			coins;
+	t_coin			coins;	
+	t_sprite		back;	
 	t_map			map;
-	int				step;
 }	t_game;
 
 void		run_game(t_game game, int argc, char **argv);
@@ -109,4 +111,6 @@ t_player	init_player(t_game game);
 t_vector2	move_player(t_game *game, int dir);
 int			check_move(t_game *game, int dir);
 void		move_sprite(t_game *game,t_vector2 newpos);
+void		update_hud(t_game *game);
+void		init_game(t_game game);
 #endif
