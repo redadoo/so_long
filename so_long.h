@@ -13,6 +13,7 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+//#include"mlx_linux/mlx.h"
 # include "gnl/get_next_line.h"
 # include "ft_libft/libft.h"
 # include <unistd.h>

@@ -38,7 +38,7 @@ CURSIVE='\033[3m'
 UNAME_S := $(shell uname -s)
 
 ifeq ($(UNAME_S),Linux)
-LINKS += -Lmlx_linux -lmlx_Linux
+LINKS += -lmlx_Linux ./mlx_linux/liblmx.a -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 endif
 
 ifeq ($(UNAME_S),Darwin)
