@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:10:35 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/20 14:22:33 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/20 15:28:33 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,10 @@ int	key_hook(int keycode, void *param)
 	}
 	move_player(game,keycode);
 	return (0);
+}
+
+void	update_coin(t_game *game)
+{
+  char arr[5][25] = {MONEY0, MONEY1, MONEY2, MONEY3, MONEY4};
+  
 }
