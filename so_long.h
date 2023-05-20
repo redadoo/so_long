@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 13:54:23 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/20 16:16:37 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/20 17:37:29 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ typedef struct s_player{
 }	t_player;
 
 typedef struct s_coin{
+	int				index;
 	t_vector2		pos;
 	t_sprite		sprite;
 	struct s_coin	*next;
@@ -85,16 +86,20 @@ typedef struct s_enemy{
 	struct s_enemy	*next;
 }	t_enemy;
 
+typedef struct s_env{
+	t_coin		coin;
+	t_enemy		enemy;
+}	t_env;
+
 typedef struct s_game{
 	void			*reference;
 	void			*mlx;
 	int				step;
 	t_player		player;
 	t_screen		window;
-	t_enemy			enemys;
-	t_coin			coins;	
 	t_sprite		back;	
 	t_map			map;
+	t_env			env;
 }	t_game;
 
 void		run_game(t_game game, int argc, char **argv);
@@ -117,9 +122,7 @@ int			check_move(t_game *game, int dir);
 void		move_sprite(t_game *game, t_vector2 newpos);
 void		update_hud(t_game *game);
 void		init_game(t_game game);
-t_coin		*spawn_env(t_game game);
+t_env		spawn_env(t_game game);
 void		update_coin(t_game *game);
-t_coin		*create_coin(t_game game,int x, int y);
-t_coin		add_coin(t_game game, t_coin coins, int x, int y);
-void		append(t_game game, t_coin **head_ref, int x, int y);
+t_coin		*add_coin(t_game game, int x, int y, t_env env);
 #endif
