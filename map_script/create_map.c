@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:12:00 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/20 16:45:54 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/20 16:46:16 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,11 @@ void	spawn_map(t_game game)
 	}
 }
 
-t_coin	*spawn_env(t_game game)
+void	spawn_env(t_game game)
 {
 	int			x;
 	int			y;
 	char		**map;
-	t_coin      *last;
 
 	x = 0;
 	y = 0;
