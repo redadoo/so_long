@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 13:54:23 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/20 14:36:40 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/20 15:14:16 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 #define PLAYER_SPRITE "Sprites/player/player_0.xpm"
 #define WALL "Sprites/wall/wall.xpm"
 #define GRASS "Sprites/title/grass.xpm"
-#define MONEY "Sprites/env/money.xpm"
+#define MONEY "Sprites/env/sprite_0.xpm"
 #define BACK "Sprites/env/backstring.xpm"
 
 #define EXIT 53
@@ -113,4 +113,5 @@ int			check_move(t_game *game, int dir);
 void		move_sprite(t_game *game,t_vector2 newpos);
 void		update_hud(t_game *game);
 void		init_game(t_game game);
+void		spawn_env(t_game game);
 #endif

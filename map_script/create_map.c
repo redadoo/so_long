@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:12:00 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/20 14:32:25 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/20 15:05:52 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	spawn_env(t_game game)
 		while (game.map.matrix[y][x] != '\0')
 		{
 			if (game.map.matrix[y][x] == 'C')
-				mlx_put_image_to_window(game.mlx,game.window.reference,test.b_img,x * 32,y * 32);
+				mlx_put_image_to_window(game.mlx,game.window.reference,test.img,x * 32,y * 32);
 			x++;
 		}	
 		x = 0;
