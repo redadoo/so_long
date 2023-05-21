@@ -22,7 +22,7 @@ t_player init_player(t_game game)
 	y = 0;
 	player.sprite.img = mlx_xpm_file_to_image(game.mlx, PLAYER_SPRITE, &player.sprite.size.x, &player.sprite.size.y);
 	player.sprite.b_img = mlx_xpm_file_to_image(game.mlx, GRASS, &player.sprite.size.x, &player.sprite.size.y);
-	while (game.map.matrix[y] != '\0')
+	while (y < game.map.height)
 	{
 		while (game.map.matrix[y][x] != '\0')
 		{

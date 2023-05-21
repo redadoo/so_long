@@ -30,7 +30,7 @@ void	run_game(t_game game, int argc, char **argv)
 	mlx_loop(game.mlx);
 }
 
-int	main(int argc, char **argv)
+int	main(int argc, char**argv)
 {
 	t_game	game;
 

@@ -40,9 +40,9 @@ void	spawn_map(t_game game)
 
 t_env	spawn_env(t_game game)
 {
-	int			x;
-	int			y;
 	t_env		env;
+	/*int			x;
+	int			y;
 
 	x = 0;
 	y = 0;
@@ -70,7 +70,7 @@ t_env	spawn_env(t_game game)
 		}
 		x = 0;
 		y++;
-	}
+	}*/
 	return (env);
 }
 

@@ -19,13 +19,12 @@ int	printstring(char *s)
 	i = 0;
 	if (s == NULL)
 	{
-		write(1, "(null)", 6);
-		return (6);
+		return (write(1, "(null)", 6));
 	}
 	while (*s)
 	{
-		write(1, s, 1);
-		i++;
+		i += (int)write(1, s, 1);
+		
 		s++;
 	}
 	return (i);
@@ -36,8 +35,7 @@ int	printchars(int c)
 	char	i;
 
 	i = (char)c;
-	write(1, &i, 1);
-	return (1);
+	return (write(1, &i, 1));
 }
 
 int	printdigit(int n)

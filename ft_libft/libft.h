@@ -20,6 +20,8 @@
 # include <stdarg.h>
 # include <fcntl.h>
 # include <stdbool.h>
+# include <stdint.h>
+
 
 typedef struct s_list
 {
@@ -59,7 +61,7 @@ char		*ft_strtrim(char const *s1, char const *set);
 char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void		ft_striteri(char *s, void (*f)(unsigned int, char*));
 void		ft_putstr_fd(char *s, int fd);
-void		ft_putnbr_fd(int n, int fd);
+//void		ft_putnbr_fd(int n, int fd);
 void		ft_putendl_fd(char *s, int fd);
 void		ft_putchar_fd(char c, int fd);
 t_list		*ft_lstnew(void *content);

@@ -38,7 +38,7 @@ CURSIVE='\033[3m'
 UNAME_S := $(shell uname -s)
 
 ifeq ($(UNAME_S),Linux)
-LINKS += -lmlx_Linux ./mlx_linux/liblmx.a -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
+LINKS += -Lmlx_linux ./mlx_linux/libmlx.a -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 endif
 
 ifeq ($(UNAME_S),Darwin)
@@ -50,14 +50,14 @@ FLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@echo $(CURSIVE)$(GRAY) "     - Compiling $(NAME)..." $(NONE)
+	@echo $(CURSIVE) $(GRAY) "     - Compiling $(NAME)..." $(NONE)
 	@gcc $(FLAGS) $(OBJ) $(LINKS) -o $(NAME)
 	@echo $(GREEN)"- Compiled -"$(NONE)
 	@rm -rf $(OBJ)
 	
 $(OBJ): $(SRC)
 	@echo $(CURSIVE)$(GRAY) "     - Making object files..." $(NONE)
-	@gcc $(FLAAGS) -c $(SRC)
+	@gcc -I/usr/include -Imlx_linux -O3 -c $(SRC)
 
 exe: all
 	@echo "     - Executing $(NAME)... \n"
@@ -65,13 +65,13 @@ exe: all
 	@echo "\n     - Done -"
 
 play0: all
-	@./$(NAME) Map/map_0.ber
+	@./$(NAME) map/map_0.ber
 
 error : all
-	@./$(NAME) Map/error_map.ber
+	@./$(NAME) map/error_map.ber
 
 big : all
-	@./$(NAME) Map/big.ber
+	@./$(NAME) map/big.ber
 
 leaks: all
 	@leaks --atExit -- ./$(NAME) map/map_0.ber

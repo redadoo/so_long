@@ -13,13 +13,28 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-//#include"mlx_linux/mlx.h"
+#ifdef __linux__
+	# include "./mlx_linux/mlx.h"
+	#define UP 119
+	#define LEFT 97
+	#define DOWN 115
+	#define RIGHT 100
+	#define EXIT 65307
+#elif __APPLE__
+	# include "mlx.h"
+	#define UP 13
+	#define LEFT 0
+	#define DOWN 1
+	#define RIGHT 2
+	#define EXIT 53
+#endif
+
 # include "gnl/get_next_line.h"
 # include "ft_libft/libft.h"
+# include <stdint.h>
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <mlx.h>
  
 #define PLAYER_SPRITE "Sprites/player/player_0.xpm"
 #define WALL "Sprites/wall/wall.xpm"
@@ -31,20 +46,7 @@
 #define MONEY4 "Sprites/env/sprite_4.xpm"
 #define BACK "Sprites/env/backstring.xpm"
 
-#define EXIT 53
 #define IMG_SIZE 32
-
-#ifdef __linux__
-	#define UP 77
-	#define LEFT 61
-	#define DOWN 73
-	#define RIGHT 64
-#elif __APPLE__
-	#define UP 13
-	#define LEFT 0
-	#define DOWN 1
-	#define RIGHT 2
-#endif
 
 typedef struct s_vector
 {
