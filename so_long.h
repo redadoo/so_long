@@ -77,7 +77,6 @@ typedef struct s_player{
 }	t_player;
 
 typedef struct s_coin{
-	int				index;
 	t_vector2		pos;
 	t_sprite		sprite;
 	struct s_coin	*next;
@@ -128,4 +127,5 @@ void		init_game(t_game game);
 t_env		spawn_env(t_game game);
 void		update_coin(t_game *game);
 t_coin		*add_coin(t_game game, int x, int y, t_env env);
+void		*give_and_put_sprite(t_game game, char *path);
 #endif

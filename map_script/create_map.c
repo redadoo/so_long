@@ -40,37 +40,25 @@ void	spawn_map(t_game game)
 
 t_env	spawn_env(t_game game)
 {
-	t_env		env;
-	/*int			x;
+	int			x;
 	int			y;
+	t_env		env;
 
 	x = 0;
 	y = 0;
-	env.coin.next = NULL;
-	while (game.map.matrix[y])
+	while (y < game.map.height)
 	{
-		while (game.map.matrix[y][x] != '\0')
+		while (x < game.map.width)
 		{
 			if (game.map.matrix[y][x] == 'C')
 			{
-				if (env.coin.next == NULL)
-				{
-					env.coin = add_coin(game, x, y, env);
-				}
-				else 
-				{
-					while (env.coin->next != NULL)
-					{
-						env.coin = env.coin->next;
-					}
-					env.coin->next = add_coin(game, x, y, env);
-				}
+				
 			}
 			x++;
 		}
 		x = 0;
 		y++;
-	}*/
+	}
 	return (env);
 }
 

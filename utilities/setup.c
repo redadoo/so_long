@@ -18,3 +18,10 @@ void init_game(t_game game)
 	set_hud(game);
 	spawn_map(game);
 }
+
+/*void *give_and_put_sprite(t_sprite sprite, t_game game, char *path)
+{
+	sprite.img = mlx_xpm_file_to_image(game.mlx, path, &sprite.size.x, &sprite.size.y);
+	mlx_put_image_to_window(game.mlx, game.window.reference, sprite.img);
+	return (sprite.img);
+}*/

@@ -18,6 +18,7 @@ int	ft_update(void *param)
 
 	game = (t_game *)param;
 	update_hud(game);
+	update_coin(game);
 	return (0);
 }
 
@@ -37,4 +38,5 @@ int	key_hook(int keycode, void *param)
 void	update_coin(t_game *game)
 {
   char arr[5][25] = {MONEY0, MONEY1, MONEY2, MONEY3, MONEY4};
+  
 }
