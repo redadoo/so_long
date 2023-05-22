@@ -43,17 +43,19 @@ t_env	spawn_env(t_game game)
 	int			x;
 	int			y;
 	t_env		env;
+	t_coin		coin;
+	t_coin		*last;
 
 	x = 0;
 	y = 0;
+	env.coin.sprite.img = mlx_xpm_file_to_image(game.mlx, MONEY0, &env.coin.sprite.size.x, &env.coin.sprite.size.y);
+	env.coin.next = NULL;
 	while (y < game.map.height)
 	{
 		while (x < game.map.width)
 		{
 			if (game.map.matrix[y][x] == 'C')
-			{
-				
-			}
+					env = add_coin(game,x,y,env);
 			x++;
 		}
 		x = 0;
@@ -62,15 +64,27 @@ t_env	spawn_env(t_game game)
 	return (env);
 }
 
-t_coin *add_coin(t_game game, int x, int y, t_env env)
+t_env	add_coin(t_game game, int x, int y, t_env env)
 {
 	t_coin *new;
+	t_coin *last;
 
- 	new = malloc(sizeof(t_coin *));
+ 	new = malloc(sizeof(t_coin));
 	new->sprite.img = mlx_xpm_file_to_image(game.mlx, MONEY0, &new->sprite.size.x, &new->sprite.size.y);
 	new->pos.x = x;
 	new->pos.y = y; 
 	mlx_put_image_to_window(game.mlx, game.window.reference, new->sprite.img, x * IMG_SIZE, y * IMG_SIZE);
 	new->next = NULL;
-	return (new);
+	if (!env.coin.next)
+	{
+		env.coin.next = new;
+	}
+	else
+	{
+		last = env.coin.next;
+		while (last->next != NULL)
+			last = last->next;
+		last->next = new;
+	}
+	return (env);
 }

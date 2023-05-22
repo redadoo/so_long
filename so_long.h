@@ -126,6 +126,6 @@ void		update_hud(t_game *game);
 void		init_game(t_game game);
 t_env		spawn_env(t_game game);
 void		update_coin(t_game *game);
-t_coin		*add_coin(t_game game, int x, int y, t_env env);
+t_env		add_coin(t_game game, int x, int y, t_env env);
 void		*give_and_put_sprite(t_game game, char *path);
 #endif
