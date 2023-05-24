@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 13:54:23 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/24 15:59:58 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/24 16:22:12 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,4 +147,6 @@ void		check_collide(t_game *game);
 t_exit		set_exit(t_game game, int x, int y);
 void		put_sprite(t_game *game, void *img, t_vector2 pos);
 t_env		add_enemy(t_game game, int x, int y, t_env env);
+int			ft_close_f(t_game *game);
+int			ft_close_e(t_game game);
 #endif

@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:41:42 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/19 16:10:02 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/24 16:21:57 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	check(t_game game)
 	i = game.map.height;
 	j = game.map.width;
 	if (i > j || !map)
-		ft_close(&game);
+		ft_close_e(game);
 	i = 0;
 	j = 0;
 	check_env('P', game);
