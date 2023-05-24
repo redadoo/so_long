@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:18:22 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/20 14:22:03 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/24 14:41:28 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_player init_player(t_game game)
 	y = 0;
 	player.sprite.img = mlx_xpm_file_to_image(game.mlx, PLAYER_SPRITE, &player.sprite.size.x, &player.sprite.size.y);
 	player.sprite.b_img = mlx_xpm_file_to_image(game.mlx, GRASS, &player.sprite.size.x, &player.sprite.size.y);
+	player.collected_coin = 0;
 	while (y < game.map.height)
 	{
 		while (game.map.matrix[y][x] != '\0')
@@ -31,7 +32,6 @@ t_player init_player(t_game game)
 				mlx_put_image_to_window(game.mlx, game.window.reference, player.sprite.img,x * IMG_SIZE, y * IMG_SIZE);
 				player.pos.x = x;
 				player.pos.y = y;
-				return (player);
 			}
 			x++;
 		}	

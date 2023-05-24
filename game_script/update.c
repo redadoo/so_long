@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:10:35 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/20 15:28:33 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/24 14:44:07 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	ft_update(void *param)
 	t_game	*game;
 
 	game = (t_game *)param;
+	check_collide(game);
 	update_hud(game);
 	update_coin(game);
 	return (0);
@@ -37,6 +38,47 @@ int	key_hook(int keycode, void *param)
 
 void	update_coin(t_game *game)
 {
-  char arr[5][25] = {MONEY0, MONEY1, MONEY2, MONEY3, MONEY4};
-  
+	char		*arr[5] = {MONEY0, MONEY1, MONEY2, MONEY3, MONEY4};
+	t_coin		*tmp;
+	static int	frame;
+	static int	index;
+
+	frame++;
+	if (frame == ANIMATION_FRAMES)
+	{
+		if (game->env.coin.next != NULL)
+		{
+			tmp = game->env.coin.next;
+			while (tmp != NULL)
+			{
+				if (tmp->exist == 1)
+					tmp->sprite.img = give_and_put_sprite(tmp->sprite,game,arr[index],tmp->pos);
+				tmp = tmp->next;
+			}
+			index++;
+		}	
+	}
+	else if (frame == ANIMATION_FRAMES * 4)
+		frame = 0;
+	if (index == 4)
+		index = 0;
+}
+
+void check_collide(t_game *game)
+{
+	t_coin		*tmp;
+
+	if (game->env.coin.next != NULL)
+	{
+		tmp = game->env.coin.next;
+		while (tmp != NULL)
+		{
+			if (tmp->pos.x == game->player.pos.x && tmp->pos.y == game->player.pos.y && tmp->exist == 1)
+			{
+				tmp->exist = 0;
+				game->player.collected_coin++;
+			}
+			tmp = tmp->next;
+		}
+	}	
 }

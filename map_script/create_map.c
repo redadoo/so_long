@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:12:00 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/20 17:37:57 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/24 14:38:40 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,18 @@ t_env	spawn_env(t_game game)
 
 	x = 0;
 	y = 0;
-	env.coin.sprite.img = mlx_xpm_file_to_image(game.mlx, MONEY0, &env.coin.sprite.size.x, &env.coin.sprite.size.y);
+	env.Ncoin = 0;
+	env.Nenemy = 0;
 	env.coin.next = NULL;
 	while (y < game.map.height)
 	{
 		while (x < game.map.width)
 		{
 			if (game.map.matrix[y][x] == 'C')
-					env = add_coin(game,x,y,env);
+			{
+				env = add_coin(game,x,y,env);
+				env.Ncoin++;
+			}
 			x++;
 		}
 		x = 0;
@@ -70,11 +74,15 @@ t_env	add_coin(t_game game, int x, int y, t_env env)
 	t_coin *last;
 
  	new = malloc(sizeof(t_coin));
+	if (!new)
+		return (env);
 	new->sprite.img = mlx_xpm_file_to_image(game.mlx, MONEY0, &new->sprite.size.x, &new->sprite.size.y);
+	new->sprite.b_img = mlx_xpm_file_to_image(game.mlx, GRASS, &new->sprite.size.x, &new->sprite.size.y);
 	new->pos.x = x;
 	new->pos.y = y; 
 	mlx_put_image_to_window(game.mlx, game.window.reference, new->sprite.img, x * IMG_SIZE, y * IMG_SIZE);
 	new->next = NULL;
+	new->exist = 1;
 	if (!env.coin.next)
 	{
 		env.coin.next = new;

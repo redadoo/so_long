@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:08:26 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/20 15:08:50 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/24 14:27:30 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,4 @@ void update_hud(t_game *game)
 	mlx_put_image_to_window(game->mlx,game->window.reference,game->back.img,60,game->window.size.y + 20);
 	mlx_string_put(game->mlx, game->window.reference,
 		65, game->window.size.y + 20, 0xccccff, s);
-	mlx_put_image_to_window(game->mlx,game->window.reference,game->back.img,60,game->window.size.y + 20);
-
 }

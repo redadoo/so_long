@@ -6,7 +6,7 @@
 #    By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 13:53:36 by evocatur          #+#    #+#              #
-#    Updated: 2023/05/20 15:06:23 by evocatur         ###   ########.fr        #
+#    Updated: 2023/05/24 13:46:14 by evocatur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ UNAME_S := $(shell uname -s)
 
 ifeq ($(UNAME_S),Linux)
 LINKS += -Lmlx_linux ./mlx_linux/libmlx.a -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
+FLAGS_LINUX = -I/usr/include -Imlx_linux -O3
 endif
 
 ifeq ($(UNAME_S),Darwin)
@@ -57,7 +58,7 @@ $(NAME): $(OBJ)
 	
 $(OBJ): $(SRC)
 	@echo $(CURSIVE)$(GRAY) "     - Making object files..." $(NONE)
-	@gcc -I/usr/include -Imlx_linux -O3 -c $(SRC)
+	@gcc $(FLAGS_LINUX) -c $(SRC)
 
 exe: all
 	@echo "     - Executing $(NAME)... \n"

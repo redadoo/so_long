@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 13:54:23 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/20 17:37:29 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/24 14:41:04 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@
 #define MONEY3 "Sprites/env/sprite_3.xpm"
 #define MONEY4 "Sprites/env/sprite_4.xpm"
 #define BACK "Sprites/env/backstring.xpm"
-
 #define IMG_SIZE 32
+#define ANIMATION_FRAMES 2
 
 typedef struct s_vector
 {
@@ -72,11 +72,13 @@ typedef struct s_sprite {
 }	t_sprite;
 
 typedef struct s_player{
+	int			collected_coin;
 	t_vector2	pos;
 	t_sprite	sprite;
 }	t_player;
 
 typedef struct s_coin{
+	int				exist;
 	t_vector2		pos;
 	t_sprite		sprite;
 	struct s_coin	*next;
@@ -89,6 +91,8 @@ typedef struct s_enemy{
 }	t_enemy;
 
 typedef struct s_env{
+	int			Ncoin;
+	int			Nenemy;
 	t_coin		coin;
 	t_enemy		enemy;
 }	t_env;
@@ -127,5 +131,6 @@ void		init_game(t_game game);
 t_env		spawn_env(t_game game);
 void		update_coin(t_game *game);
 t_env		add_coin(t_game game, int x, int y, t_env env);
-void		*give_and_put_sprite(t_game game, char *path);
+void		*give_and_put_sprite(t_sprite sprite, t_game *game, char *path, t_vector2 pos);
+void		check_collide(t_game *game);
 #endif
