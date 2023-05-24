@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 13:54:23 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/24 15:17:45 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/24 15:59:58 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@
 # include <stdlib.h>
  
 #define PLAYER_SPRITE "Sprites/player/player_0.xpm"
+#define SLIME "Sprites/env/slime.xpm"
 #define DOOR0 "Sprites/env/Door0.xpm"
 #define DOOR1 "Sprites/env/Door1.xpm"
 #define WALL "Sprites/wall/wall.xpm"
@@ -87,6 +88,7 @@ typedef struct s_coin{
 }	t_coin;
 
 typedef struct s_enemy{
+	bool			exist;
 	t_vector2		pos;
 	t_sprite		sprite;
 	struct s_enemy	*next;
@@ -144,4 +146,5 @@ void		*give_and_put_sprite(t_sprite sprite, t_game *game, char *path, t_vector2 
 void		check_collide(t_game *game);
 t_exit		set_exit(t_game game, int x, int y);
 void		put_sprite(t_game *game, void *img, t_vector2 pos);
+t_env		add_enemy(t_game game, int x, int y, t_env env);
 #endif

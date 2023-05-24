@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:10:35 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/24 15:29:22 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/24 16:07:04 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,12 @@ void	update_coin(t_game *game)
 void	check_collide(t_game *game)
 {
 	t_coin		*tmp;
+	t_enemy		*tmp1;
 
 	if (game->env.exit.open == true)
 	{
 		if (game->env.exit.pos.x == game->player.pos.x && game->env.exit.pos.y == game->player.pos.y)
-		{
 			ft_close(&game);
-		}
 	}
 	if (game->env.coin.next != NULL)
 	{
@@ -91,6 +90,16 @@ void	check_collide(t_game *game)
 				game->player.collected_coin++;
 			}
 			tmp = tmp->next;
+		}
+	}
+	if (game->env.enemy.next != NULL)
+	{
+		tmp1 = game->env.enemy.next;
+		while (tmp1 != NULL)
+		{
+			if (tmp1->pos.x == game->player.pos.x && tmp1->pos.y == game->player.pos.y)
+				ft_close(&game);
+			tmp1 = tmp1->next;
 		}
 	}	
 }

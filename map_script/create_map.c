@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:12:00 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/24 15:26:09 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/24 16:04:28 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,25 +44,22 @@ t_env	spawn_env(t_game game)
 	int			y;
 	t_env		env;
 	t_coin		coin;
-	t_coin		*last;
 
 	x = 0;
 	y = 0;
 	env.Ncoin = 0;
 	env.coin.next = NULL;
+	env.enemy.next = NULL;
 	while (y < game.map.height)
 	{
 		while (x < game.map.width)
 		{
 			if (game.map.matrix[y][x] == 'C')
-			{
 				env = add_coin(game,x,y,env);
-				env.Ncoin++;
-			}
 			if (game.map.matrix[y][x] == 'E')
-			{
 				env.exit = set_exit(game, x, y);
-			}
+			if (game.map.matrix[y][x] == 'X')
+				env = add_enemy(game, x, y, env);
 			x++;
 		}
 		x = 0;
@@ -86,10 +83,9 @@ t_env	add_coin(t_game game, int x, int y, t_env env)
 	mlx_put_image_to_window(game.mlx, game.window.reference, new->sprite.img, x * IMG_SIZE, y * IMG_SIZE);
 	new->next = NULL;
 	new->exist = 1;
+	env.Ncoin++;
 	if (!env.coin.next)
-	{
 		env.coin.next = new;
-	}
 	else
 	{
 		last = env.coin.next;
@@ -111,4 +107,32 @@ t_exit	set_exit(t_game game, int x, int y)
 	mlx_put_image_to_window(game.mlx,game.window.reference, exit.sprite.img, x * IMG_SIZE, y * IMG_SIZE);
 	exit.open = false;
 	return (exit);
-} 
+}
+
+t_env	add_enemy(t_game game, int x, int y, t_env env)
+{
+	t_enemy	*new;
+	t_enemy	*last;
+
+ 	new = malloc(sizeof(t_enemy));
+	if (!new)
+		return (env);
+	new->sprite.img = mlx_xpm_file_to_image(game.mlx, SLIME, &new->sprite.size.x, &new->sprite.size.y);
+	new->sprite.b_img = mlx_xpm_file_to_image(game.mlx, GRASS, &new->sprite.size.x, &new->sprite.size.y);
+	new->pos.x = x;
+	new->pos.y = y;
+	mlx_put_image_to_window(game.mlx, game.window.reference, new->sprite.b_img, x * IMG_SIZE, y * IMG_SIZE);
+	mlx_put_image_to_window(game.mlx, game.window.reference, new->sprite.img, x * IMG_SIZE, y * IMG_SIZE);
+	new->next = NULL;
+	new->exist = 1;
+	if (!env.enemy.next)
+		env.enemy.next = new;
+	else
+	{
+		last = env.enemy.next;
+		while (last->next != NULL)
+			last = last->next;
+		last->next = new;
+	}
+	return (env);
+}
