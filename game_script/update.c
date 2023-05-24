@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:10:35 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/24 14:44:07 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/24 15:29:22 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ int	ft_update(void *param)
 	check_collide(game);
 	update_hud(game);
 	update_coin(game);
+	if (game->env.Ncoin == game->player.collected_coin)
+	{
+		put_sprite(game, game->env.exit.sprite.b_img, game->env.exit.pos);
+		game->env.exit.open = true;
+	}
 	return (0);
 }
 
@@ -64,10 +69,17 @@ void	update_coin(t_game *game)
 		index = 0;
 }
 
-void check_collide(t_game *game)
+void	check_collide(t_game *game)
 {
 	t_coin		*tmp;
 
+	if (game->env.exit.open == true)
+	{
+		if (game->env.exit.pos.x == game->player.pos.x && game->env.exit.pos.y == game->player.pos.y)
+		{
+			ft_close(&game);
+		}
+	}
 	if (game->env.coin.next != NULL)
 	{
 		tmp = game->env.coin.next;

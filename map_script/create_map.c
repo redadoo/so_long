@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:12:00 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/24 14:38:40 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/24 15:26:09 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void	spawn_map(t_game game)
 		while (game.map.matrix[y][x] != '\0')
 		{
 			if (game.map.matrix[y][x] == '0' || game.map.matrix[y][x] == 'P' || game.map.matrix[y][x] == 'C'|| game.map.matrix[y][x] == 'E')
-				mlx_put_image_to_window(game.mlx,game.window.reference,test.img,x * 32,y * 32);
+				mlx_put_image_to_window(game.mlx,game.window.reference,test.img,x * 32, y * 32);
 			if (game.map.matrix[y][x] == '1')
-				mlx_put_image_to_window(game.mlx,game.window.reference,test.b_img,x * 32,y * 32);
+				mlx_put_image_to_window(game.mlx,game.window.reference,test.b_img,x * 32, y * 32);
 			x++;
 		}	
 		x = 0;
@@ -49,7 +49,6 @@ t_env	spawn_env(t_game game)
 	x = 0;
 	y = 0;
 	env.Ncoin = 0;
-	env.Nenemy = 0;
 	env.coin.next = NULL;
 	while (y < game.map.height)
 	{
@@ -59,6 +58,10 @@ t_env	spawn_env(t_game game)
 			{
 				env = add_coin(game,x,y,env);
 				env.Ncoin++;
+			}
+			if (game.map.matrix[y][x] == 'E')
+			{
+				env.exit = set_exit(game, x, y);
 			}
 			x++;
 		}
@@ -96,3 +99,16 @@ t_env	add_coin(t_game game, int x, int y, t_env env)
 	}
 	return (env);
 }
+
+t_exit	set_exit(t_game game, int x, int y)
+{
+	t_exit exit;
+
+	exit.pos.x = x;
+	exit.pos.y = y;
+	exit.sprite.img = mlx_xpm_file_to_image(game.mlx, DOOR0, &exit.sprite.size.x, &exit.sprite.size.y);
+	exit.sprite.b_img = mlx_xpm_file_to_image(game.mlx, DOOR1, &exit.sprite.size.x, &exit.sprite.size.y);
+	mlx_put_image_to_window(game.mlx,game.window.reference, exit.sprite.img, x * IMG_SIZE, y * IMG_SIZE);
+	exit.open = false;
+	return (exit);
+} 

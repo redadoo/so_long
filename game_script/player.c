@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:18:22 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/24 14:41:28 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/24 15:31:37 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ t_vector2 move_player(t_game *game, int dir)
 
 int check_move(t_game *game, int dir)
 {
-	int x;
+	int	x;
 	int y;
 
 	x = game->player.pos.x;
@@ -85,6 +85,8 @@ int check_move(t_game *game, int dir)
 	else if (dir == LEFT)
 		x--;
 	if (game->map.matrix[y][x] == '1')
+		return (0);
+	if (!game->env.exit.open && game->map.matrix[y][x] == 'E')
 		return (0);
 	return (1);
 }

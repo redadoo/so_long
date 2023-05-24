@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 13:54:23 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/24 14:41:04 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/24 15:17:45 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@
 # include <stdlib.h>
  
 #define PLAYER_SPRITE "Sprites/player/player_0.xpm"
+#define DOOR0 "Sprites/env/Door0.xpm"
+#define DOOR1 "Sprites/env/Door1.xpm"
 #define WALL "Sprites/wall/wall.xpm"
 #define GRASS "Sprites/title/grass.xpm"
 #define MONEY0 "Sprites/env/sprite_0.xpm"
@@ -90,11 +92,18 @@ typedef struct s_enemy{
 	struct s_enemy	*next;
 }	t_enemy;
 
+typedef struct s_exit{
+	bool			open;
+	t_vector2		pos;
+	t_sprite		sprite;
+}	t_exit;
+
 typedef struct s_env{
 	int			Ncoin;
 	int			Nenemy;
 	t_coin		coin;
 	t_enemy		enemy;
+	t_exit		exit;
 }	t_env;
 
 typedef struct s_game{
@@ -133,4 +142,6 @@ void		update_coin(t_game *game);
 t_env		add_coin(t_game game, int x, int y, t_env env);
 void		*give_and_put_sprite(t_sprite sprite, t_game *game, char *path, t_vector2 pos);
 void		check_collide(t_game *game);
+t_exit		set_exit(t_game game, int x, int y);
+void		put_sprite(t_game *game, void *img, t_vector2 pos);
 #endif
