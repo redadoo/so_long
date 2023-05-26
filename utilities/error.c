@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:42:29 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/26 14:27:36 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/26 14:32:36 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,8 @@ int	ft_close_f(t_game *game)
 {
 	char	**map;
 	char	*line;
-	t_enemy *tmp;
-	t_enemy *last;
-	t_coin	*tmp1;
-	t_coin	*last1;
 
 	map = game->map.matrix;
-	printf("\n test   f");
 	while (*map)
 	{
 		line = *map;
@@ -67,11 +62,10 @@ int	ft_close_f(t_game *game)
 
 int	ft_close_e(t_game game)
 {
-	char **map;
-	char *line;
+	char	**map;
+	char	*line;
 
 	map = game.map.matrix;
-	printf("\n test   e");
 	while (*map)
 	{
 		line = *map;
@@ -85,10 +79,10 @@ int	ft_close_e(t_game game)
 
 void	free_coin(t_coin *coin)
 {
-	t_coin *tmp;
+	t_coin	*tmp;
 
 	if (coin == NULL)
-		return;
+		return ;
 	while (coin != NULL)
 	{
 		tmp = coin;
