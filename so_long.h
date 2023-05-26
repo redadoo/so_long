@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 13:54:23 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/24 16:22:12 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/26 14:22:50 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,6 @@ void		check_wall(char c, int i, int j,t_game game);
 int			ft_close(void *param);
 void		set_hud(t_game game);
 int			ft_update(void *param);
-void		check_ber(char *name);
 int			key_hook(int keycode, void *param);
 void		spawn_map(t_game game);
 void		printmatrix(char **matrix);
@@ -149,4 +148,6 @@ void		put_sprite(t_game *game, void *img, t_vector2 pos);
 t_env		add_enemy(t_game game, int x, int y, t_env env);
 int			ft_close_f(t_game *game);
 int			ft_close_e(t_game game);
+void		free_coin(t_coin *coin);
+
 #endif

@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:42:29 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/24 16:45:01 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/26 14:27:36 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,23 @@ void	null_error(char *message, void *param)
 
 int	ft_close(void *param)
 {	
+	t_coin		*tmp;
 	t_game		*game;
 	char		**map;
 	char		*line;
 
 	game = (t_game *)param;
+	tmp = game->env.coin.next;
 	map = game->map.matrix;
+	printf("\n test   c");
 	while (*map)
 	{
 		line = *map;
 		free(line);
 		map++;
 	}
+	free(game->map.matrix);
+	free_coin(game->env.coin.next);
 	exit(0);
 }
 
@@ -48,13 +53,15 @@ int	ft_close_f(t_game *game)
 	t_coin	*last1;
 
 	map = game->map.matrix;
-	printf("\n test");
+	printf("\n test   f");
 	while (*map)
 	{
 		line = *map;
 		free(line);
 		map++;
 	}
+	free(game->map.matrix);
+	free_coin(game->env.coin.next);
 	exit(0);
 }
 
@@ -64,20 +71,34 @@ int	ft_close_e(t_game game)
 	char *line;
 
 	map = game.map.matrix;
+	printf("\n test   e");
 	while (*map)
 	{
 		line = *map;
 		free(line);
 		map++;
 	}
+	free(game.map.matrix);
+	free_coin(game.env.coin.next);
 	exit(0);
 }
 
-void	check_ber(char *name)
+void	free_coin(t_coin *coin)
 {
-	if (ft_strnstr(name, ".ber", 9) != NULL)
+	t_coin *tmp;
+
+	if (coin == NULL)
+		return;
+	while (coin != NULL)
 	{
-		ft_printf("\033[0;31m" " Error\n \n" "\033[0m");
-		exit(0);
+		tmp = coin;
+		coin = coin->next;
+		tmp->sprite.img = NULL;
+		tmp->sprite.b_img = NULL;
+		tmp->next = NULL;
+		tmp->pos.x = 0;
+		tmp->pos.y = 0;
+		free(tmp);
 	}
+	free(coin);
 }

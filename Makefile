@@ -6,7 +6,7 @@
 #    By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 13:53:36 by evocatur          #+#    #+#              #
-#    Updated: 2023/05/24 16:10:15 by evocatur         ###   ########.fr        #
+#    Updated: 2023/05/26 14:28:55 by evocatur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,7 +75,7 @@ big : all
 	@./$(NAME) map/big.ber
 
 leaks: all
-	@leaks --atExit -- ./$(NAME) map/map_1.ber
+	@leaks --atExit -- ./$(NAME) map/big.ber
 
 norm:
 	@norminette $(SRC)

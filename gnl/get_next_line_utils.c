@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 10:16:28 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/18 15:04:59 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/26 14:17:28 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,11 @@ size_t	ft_strlen(const char *str)
 	int	count;
 
 	count = 0;
-	while (str[count] != '\0')
-		count++;
+	while (*str)
+	{
+		count += 1;
+		str++;
+	}
 	return (count);
 }
 
@@ -119,5 +122,7 @@ char	*ft_get_line(char *backup)
 		i++;
 	}
 	str[i] = '\0';
+/* 	if (str[i] == '\0')
+		printf("\ntest nulll %i\n",i); */
 	return (str);
 }

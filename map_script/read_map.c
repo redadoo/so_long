@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:01:35 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/19 17:00:39 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/05/26 14:19:11 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ t_map	readmap(void *param, char *file)
 	char			**map;
 	t_map			game_map;
 
-	map = (char **)ft_calloc((sizeof(char *)), file_linecount(file) + 1);
+	map = ft_calloc((sizeof(char *)), file_linecount(file) + 1);
 	if (map == NULL)
 		return (game_map);
 	fd = open(file, O_RDONLY);
