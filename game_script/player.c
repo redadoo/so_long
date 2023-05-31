@@ -12,11 +12,11 @@
 
 #include "../so_long.h"
 
-t_player init_player(t_game game)
+t_player	init_player(t_game game)
 {
 	int			x;
 	int			y;
-	t_player    player;
+	t_player	player;
 
 	x = 0;
 	y = 0;

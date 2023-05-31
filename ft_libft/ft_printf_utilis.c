@@ -24,7 +24,6 @@ int	printstring(char *s)
 	while (*s)
 	{
 		i += (int)write(1, s, 1);
-		
 		s++;
 	}
 	return (i);

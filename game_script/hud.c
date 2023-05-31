@@ -12,7 +12,7 @@
 
 #include "../so_long.h"
 
-void set_hud(t_game game)
+void	set_hud(t_game game)
 {
 	mlx_string_put(game.mlx, game.window.reference,
 		15, game.window.size.y + 20, 0xccccff, "step:");
@@ -20,12 +20,13 @@ void set_hud(t_game game)
 		65, game.window.size.y + 20, 0xccccff, "0");
 }
 
-void update_hud(t_game *game)
+void	update_hud(t_game *game)
 {
-	char *s;
+	char	*s;
 
-	s =  ft_itoa(game->step);
-	mlx_put_image_to_window(game->mlx,game->window.reference,game->back.img,60,game->window.size.y + 20);
+	s = ft_itoa(game->step);
+	mlx_put_image_to_window(game->mlx, game->window.reference,
+		game->back.img, 60, game->window.size.y + 20);
 	mlx_string_put(game->mlx, game->window.reference,
 		65, game->window.size.y + 20, 0xccccff, s);
 	free(s);
