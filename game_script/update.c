@@ -37,17 +37,18 @@ int	key_hook(int keycode, void *param)
 	{
 		ft_close(param);
 	}
-	move_player(game,keycode);
+	move_player(game, keycode);
 	return (0);
 }
 
 void	update_coin(t_game *game)
 {
-	char		*arr[5] = {MONEY0, MONEY1, MONEY2, MONEY3, MONEY4};
+	char		*arr[5];
 	t_coin		*tmp;
 	static int	frame;
 	static int	index;
 
+	arr = {MONEY0, MONEY1, MONEY2, MONEY3, MONEY4};
 	frame++;
 	if (frame == ANIMATION_FRAMES)
 	{
@@ -57,7 +58,7 @@ void	update_coin(t_game *game)
 			while (tmp != NULL)
 			{
 				if (tmp->exist == 1)
-					tmp->sprite.img = give_and_put_sprite(tmp->sprite,game,arr[index],tmp->pos);
+					tmp->sprite.img = give_and_put_sprite(tmp->sprite, game, arr[index], tmp->pos);
 				tmp = tmp->next;
 			}
 			index++;

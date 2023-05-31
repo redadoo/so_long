@@ -20,7 +20,8 @@ void	run_game(t_game game, int argc, char **argv)
 	check(game);
 	game.window = ft_new_window(game, game.map.width, game.map.height, "test");
 	game.step = 0;
-	game.back.img = mlx_xpm_file_to_image(game.mlx, BACK, &game.back.size.x, &game.back.size.y);
+	game.back.img = mlx_xpm_file_to_image(game.mlx, BACK,
+			&game.back.size.x, &game.back.size.y);
 	init_game(game);
 	game.player = init_player(game);
 	game.env = spawn_env(game);

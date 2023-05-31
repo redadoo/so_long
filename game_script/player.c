@@ -29,7 +29,7 @@ t_player	init_player(t_game game)
 		{
 			if (game.map.matrix[y][x] == 'P')
 			{
-				mlx_put_image_to_window(game.mlx, game.window.reference, player.sprite.img,x * IMG_SIZE, y * IMG_SIZE);
+				mlx_put_image_to_window(game.mlx, game.window.reference, player.sprite.img, x * IMG_SIZE, y * IMG_SIZE);
 				player.pos.x = x;
 				player.pos.y = y;
 			}
@@ -41,38 +41,38 @@ t_player	init_player(t_game game)
 	return (player);
 }
 
-t_vector2 move_player(t_game *game, int dir)
+t_vector2	move_player(t_game *game, int dir)
 {
-	t_vector2 oldpos;
+	t_vector2	oldpos;
 
 	oldpos = game->player.pos;
 	if (check_move(game, UP) && dir == UP)
 	{
 		game->player.pos.y--;
-		move_sprite(game,oldpos);
+		move_sprite(game, oldpos);
 	}
 	else if (check_move(game, DOWN) && dir == DOWN)
 	{
 		game->player.pos.y++;
-		move_sprite(game,oldpos);
+		move_sprite(game, oldpos);
 	}
 	else if (check_move(game, RIGHT) && dir == RIGHT)
 	{
 		game->player.pos.x++;
-		move_sprite(game,oldpos);
+		move_sprite(game, oldpos);
 	}
 	else if (check_move(game, LEFT) && dir == LEFT)
 	{
 		game->player.pos.x--;
-		move_sprite(game,oldpos);
+		move_sprite(game, oldpos);
 	}
 	return (game->player.pos);
 }
 
-int check_move(t_game *game, int dir)
+int	check_move(t_game *game, int dir)
 {
 	int	x;
-	int y;
+	int	y;
 
 	x = game->player.pos.x;
 	y = game->player.pos.y;
@@ -91,9 +91,11 @@ int check_move(t_game *game, int dir)
 	return (1);
 }
 
-void move_sprite(t_game *game,t_vector2 oldpos)
+void	move_sprite(t_game *game, t_vector2 oldpos)
 {
 	game->step += 1;
-	mlx_put_image_to_window(game->mlx, game->window.reference, game->player.sprite.b_img, oldpos.x * IMG_SIZE, oldpos.y  * IMG_SIZE);
-	mlx_put_image_to_window(game->mlx, game->window.reference, game->player.sprite.img,  game->player.pos.x * IMG_SIZE, game->player.pos.y * IMG_SIZE);
+	mlx_put_image_to_window(game->mlx, game->window.reference,
+		game->player.sprite.b_img, oldpos.x * IMG_SIZE, oldpos.y * IMG_SIZE);
+	mlx_put_image_to_window(game->mlx, game->window.reference,
+		game->player.sprite.img, game->player.pos.x * IMG_SIZE, game->player.pos.y * IMG_SIZE);
 }

@@ -19,7 +19,7 @@ t_screen	ft_new_window(t_game game, int widht, int height, char *name)
 
 	widht *= IMG_SIZE;
 	height *= IMG_SIZE;
-	window.reference = mlx_new_window(game.mlx, widht , height + 50, name);
+	window.reference = mlx_new_window(game.mlx, widht, height + 50, name);
 	window.size.x = widht;
 	window.size.y = height;
 	return (window);
