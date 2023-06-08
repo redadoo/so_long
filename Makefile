@@ -6,7 +6,7 @@
 #    By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 13:53:36 by evocatur          #+#    #+#              #
-#    Updated: 2023/05/26 14:28:55 by evocatur         ###   ########.fr        #
+#    Updated: 2023/06/08 17:03:34 by evocatur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,10 +30,10 @@ UTILITIES_SRC = utilities/*.c
 
 OBJ = *.o
 
-NONE='\033[0m'
-GREEN='\033[32m'
-GRAY='\033[2;37m'
-CURSIVE='\033[3m'
+NONE="\033[0m"
+GREEN="\033[32m"
+GRAY="\033[2;37m"
+CURSIVE="\033[3m"
 
 UNAME_S := $(shell uname -s)
 
