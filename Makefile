@@ -6,7 +6,7 @@
 #    By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 13:53:36 by evocatur          #+#    #+#              #
-#    Updated: 2023/06/08 17:03:34 by evocatur         ###   ########.fr        #
+#    Updated: 2023/06/08 17:04:31 by evocatur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,6 @@ GNL_SRC = gnl/*.c
 LIBFT_SRC = ft_libft/*.c
 
 UTILITIES_SRC = utilities/*.c
-
 
 OBJ = *.o
 
