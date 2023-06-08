@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 13:53:06 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/24 14:37:28 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/06/08 15:02:50 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	run_game(t_game game, int argc, char **argv)
 {
 	if (argc != 2)
 		return ;
+	game.env.coin.next = NULL;
 	game.map = readmap(&game, argv[1]);
 	check(game);
 	game.window = ft_new_window(game, game.map.width, game.map.height, "test");

@@ -2,6 +2,7 @@
     "C_Cpp.errorSquiggles": "disabled",
     "files.associations": {
         "so_long.h": "c",
-        "mlx.h": "c"
+        "mlx.h": "c",
+        "__config": "c"
     }
 }

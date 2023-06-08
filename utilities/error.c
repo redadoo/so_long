@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:42:29 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/26 14:32:36 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/06/08 15:16:38 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int	ft_close(void *param)
 	game = (t_game *)param;
 	tmp = game->env.coin.next;
 	map = game->map.matrix;
-	printf("\n test   c");
 	while (*map)
 	{
 		line = *map;
@@ -81,7 +80,7 @@ void	free_coin(t_coin *coin)
 {
 	t_coin	*tmp;
 
-	if (coin == NULL)
+	if (!coin)
 		return ;
 	while (coin != NULL)
 	{
@@ -90,9 +89,9 @@ void	free_coin(t_coin *coin)
 		tmp->sprite.img = NULL;
 		tmp->sprite.b_img = NULL;
 		tmp->next = NULL;
-		tmp->pos.x = 0;
-		tmp->pos.y = 0;
-		free(tmp);
+		if (tmp != NULL)
+			free(tmp);
 	}
-	free(coin);
+	if (coin != NULL)
+		free(coin);
 }

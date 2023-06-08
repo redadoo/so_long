@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:10:35 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/24 16:15:47 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/06/08 17:00:00 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	ft_update(void *param)
 
 	game = (t_game *)param;
 	check_collide(game);
+	if (game->env.exit.open == true)
+		(void)compare_vector(game->player.pos, game->env.exit.pos, game, 0);
 	update_hud(game);
 	update_coin(game);
 	if (game->env.Ncoin == game->player.collected_coin)
@@ -41,66 +43,71 @@ int	key_hook(int keycode, void *param)
 	return (0);
 }
 
-void	update_coin(t_game *game)
+void	update_coin(t_game *g)
 {
-	char		*arr[5];
+	char		*a[5] = {MONEY0, MONEY1, MONEY2, MONEY3, MONEY4};
 	t_coin		*tmp;
 	static int	frame;
-	static int	index;
+	static int	i;
 
-	arr = {MONEY0, MONEY1, MONEY2, MONEY3, MONEY4};
 	frame++;
 	if (frame == ANIMATION_FRAMES)
 	{
-		if (game->env.coin.next != NULL)
+		if (g->env.coin.next != NULL)
 		{
-			tmp = game->env.coin.next;
+			tmp = g->env.coin.next;
 			while (tmp != NULL)
 			{
 				if (tmp->exist == 1)
-					tmp->sprite.img = give_and_put_sprite(tmp->sprite, game, arr[index], tmp->pos);
+					tmp->sprite.img = set_put(tmp->sprite, g, a[i], tmp->pos);
 				tmp = tmp->next;
 			}
-			index++;
+			i++;
 		}	
 	}
 	else if (frame == ANIMATION_FRAMES * 4)
 		frame = 0;
-	if (index == 4)
-		index = 0;
+	if (i == 4)
+		i = 0;
 }
 
-void	check_collide(t_game *game)
+void	check_collide(t_game *g)
 {
 	t_coin		*tmp;
 	t_enemy		*tmp1;
 
-	if (game->env.exit.open == true)
+	if (g->env.coin.next != NULL)
 	{
-		if (game->env.exit.pos.x == game->player.pos.x && game->env.exit.pos.y == game->player.pos.y)
-			ft_close_f(game);
-	}
-	if (game->env.coin.next != NULL)
-	{
-		tmp = game->env.coin.next;
+		tmp = g->env.coin.next;
 		while (tmp != NULL)
 		{
-			if (tmp->pos.x == game->player.pos.x && tmp->pos.y == game->player.pos.y && tmp->exist == 1)
+			if (compare_vector(tmp->pos, g->player.pos, g, 1) && tmp->exist)
 			{
 				tmp->exist = 0;
-				game->player.collected_coin++;
+				g->player.collected_coin++;
 			}
 			tmp = tmp->next;
 		}
 	}
-	if (game->env.enemy.next != NULL)
+	if (g->env.enemy.next != NULL)
 	{
-		tmp1 = game->env.enemy.next;
+		tmp1 = g->env.enemy.next;
 		while (tmp1 != NULL)
 		{
-			if (tmp1->pos.x == game->player.pos.x && tmp1->pos.y == game->player.pos.y)
-				ft_close_f(game);
+			(void)compare_vector(tmp1->pos, g->player.pos, g, 0);
 			tmp1 = tmp1->next;
 		}
-	}	
+	}
+}
+
+int	compare_vector(t_vector2 v1, t_vector2 v2, t_game *game, int i)
+{
+	if (v1.x == v2.x && v1.y == v2.y)
+	{
+		if (i == 0)
+			ft_close_f(game);
+		else
+			return (1);
+	}
+	return (0);
 }

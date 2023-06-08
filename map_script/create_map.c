@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:12:00 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/26 14:44:23 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/06/08 15:56:08 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,12 @@ t_env	add_coin(t_game game, int x, int y, t_env env)
 	new = malloc(sizeof(t_coin));
 	if (!new)
 		return (env);
-	new->sprite.img = mlx_xpm_file_to_image(game.mlx, MONEY0, &new->sprite.size.x, &new->sprite.size.y);
-	new->sprite.b_img = mlx_xpm_file_to_image(game.mlx, GRASS, &new->sprite.size.x, &new->sprite.size.y);
+	new->sprite.img = give_sprite(game, MONEY0);
+	new->sprite.b_img = give_sprite(game, GRASS);
 	new->pos.x = x;
 	new->pos.y = y;
-	mlx_put_image_to_window(game.mlx, game.window.reference, new->sprite.img, x * 32, y * 32);
+	mlx_put_image_to_window(game.mlx,
+		game.window.reference, new->sprite.img, x * 32, y * 32);
 	new->next = NULL;
 	new->exist = 1;
 	env.Ncoin++;
@@ -104,9 +105,10 @@ t_exit	set_exit(t_game game, int x, int y)
 
 	exit.pos.x = x;
 	exit.pos.y = y;
-	exit.sprite.img = mlx_xpm_file_to_image(game.mlx, DOOR0, &exit.sprite.size.x, &exit.sprite.size.y);
-	exit.sprite.b_img = mlx_xpm_file_to_image(game.mlx, DOOR1, &exit.sprite.size.x, &exit.sprite.size.y);
-	mlx_put_image_to_window(game.mlx, game.window.reference, exit.sprite.img, x * IMG_SIZE, y * IMG_SIZE);
+	exit.sprite.img = give_sprite(game, DOOR0);
+	exit.sprite.b_img = give_sprite(game, DOOR1);
+	mlx_put_image_to_window(game.mlx, game.window.reference,
+		exit.sprite.img, x * IMG_SIZE, y * IMG_SIZE);
 	exit.open = false;
 	return (exit);
 }
@@ -119,12 +121,11 @@ t_env	add_enemy(t_game game, int x, int y, t_env env)
 	new = malloc(sizeof(t_enemy));
 	if (!new)
 		return (env);
-	new->sprite.img = mlx_xpm_file_to_image(game.mlx, SLIME, &new->sprite.size.x, &new->sprite.size.y);
-	new->sprite.b_img = mlx_xpm_file_to_image(game.mlx, GRASS, &new->sprite.size.x, &new->sprite.size.y);
 	new->pos.x = x;
 	new->pos.y = y;
-	mlx_put_image_to_window(game.mlx, game.window.reference, new->sprite.b_img, x * IMG_SIZE, y * IMG_SIZE);
-	mlx_put_image_to_window(game.mlx, game.window.reference, new->sprite.img, x * IMG_SIZE, y * IMG_SIZE);
+	new->sprite.b_img = give_and_put_sprite_f(new->sprite,
+			game, GRASS, new->pos);
+	new->sprite.img = give_and_put_sprite_f(new->sprite, game, SLIME, new->pos);
 	new->next = NULL;
 	new->exist = 1;
 	if (!env.enemy.next)

@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 10:16:28 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/26 14:17:28 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/06/08 15:17:34 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,5 @@ char	*ft_get_line(char *backup)
 		i++;
 	}
 	str[i] = '\0';
-/* 	if (str[i] == '\0')
-		printf("\ntest nulll %i\n",i); */
 	return (str);
 }

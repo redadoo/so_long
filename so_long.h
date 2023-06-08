@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 13:54:23 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/26 14:22:50 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/06/08 16:57:56 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,7 @@ void		init_game(t_game game);
 t_env		spawn_env(t_game game);
 void		update_coin(t_game *game);
 t_env		add_coin(t_game game, int x, int y, t_env env);
-void		*give_and_put_sprite(t_sprite sprite, t_game *game, char *path, t_vector2 pos);
+void		*set_put(t_sprite sprite, t_game *game, char *path, t_vector2 pos);
 void		check_collide(t_game *game);
 t_exit		set_exit(t_game game, int x, int y);
 void		put_sprite(t_game *game, void *img, t_vector2 pos);
@@ -149,5 +149,8 @@ t_env		add_enemy(t_game game, int x, int y, t_env env);
 int			ft_close_f(t_game *game);
 int			ft_close_e(t_game game);
 void		free_coin(t_coin *coin);
+void		*give_sprite(t_game game, char*p);
+void		*give_and_put_sprite_f(t_sprite sp, t_game game, char *p, t_vector2 pos);
+int			compare_vector(t_vector2 v1, t_vector2 v2, t_game *game, int i);
 
 #endif
