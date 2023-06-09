@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 14:35:51 by evocatur          #+#    #+#             */
-/*   Updated: 2023/06/08 16:57:40 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/06/09 09:41:08 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	init_game(t_game game)
 {
-	check(game);
 	set_hud(game);
 	spawn_map(game);
 }

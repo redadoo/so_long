@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 13:54:23 by evocatur          #+#    #+#             */
-/*   Updated: 2023/06/08 16:57:56 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/06/09 09:40:56 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ typedef struct s_exit{
 typedef struct s_env{
 	int			Ncoin;
 	int			Nenemy;
+	char		*a[4];
 	t_coin		coin;
 	t_enemy		enemy;
 	t_exit		exit;
@@ -152,5 +153,6 @@ void		free_coin(t_coin *coin);
 void		*give_sprite(t_game game, char*p);
 void		*give_and_put_sprite_f(t_sprite sp, t_game game, char *p, t_vector2 pos);
 int			compare_vector(t_vector2 v1, t_vector2 v2, t_game *game, int i);
+void		build_array(char *arr[]);
 
 #endif

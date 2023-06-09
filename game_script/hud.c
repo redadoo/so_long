@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:08:26 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/26 14:28:19 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/06/09 09:40:01 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,13 @@ void	update_hud(t_game *game)
 	mlx_string_put(game->mlx, game->window.reference,
 		65, game->window.size.y + 20, 0xccccff, s);
 	free(s);
+}
+
+void	build_array(char *arr[])
+{
+	arr[0] = MONEY0;
+	arr[1] = MONEY1;
+	arr[2] = MONEY2;
+	arr[3] = MONEY3;
+	arr[4] = MONEY4;
 }

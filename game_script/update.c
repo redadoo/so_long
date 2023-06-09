@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:10:35 by evocatur          #+#    #+#             */
-/*   Updated: 2023/06/08 17:00:00 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/06/09 09:44:01 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ int	key_hook(int keycode, void *param)
 
 void	update_coin(t_game *g)
 {
-	char		*a[5] = {MONEY0, MONEY1, MONEY2, MONEY3, MONEY4};
 	t_coin		*tmp;
 	static int	frame;
 	static int	i;
 
 	frame++;
+	build_array(g->env.a);
 	if (frame == ANIMATION_FRAMES)
 	{
 		if (g->env.coin.next != NULL)
@@ -59,7 +59,8 @@ void	update_coin(t_game *g)
 			while (tmp != NULL)
 			{
 				if (tmp->exist == 1)
-					tmp->sprite.img = set_put(tmp->sprite, g, a[i], tmp->pos);
+					tmp->sprite.img = set_put(tmp->sprite,
+							g, g->env.a[i], tmp->pos);
 				tmp = tmp->next;
 			}
 			i++;
