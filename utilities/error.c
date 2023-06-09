@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:42:29 by evocatur          #+#    #+#             */
-/*   Updated: 2023/06/08 15:16:38 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/06/09 13:17:03 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	null_error(char *message, void *param)
 
 	game = (t_game *)param;
 	ft_printf("\033[0;31m" " Error\n %s\n" "\033[0m", message);
-	ft_close(param);
+	ft_close(param, 0);
 }
 
-int	ft_close(void *param)
+int	ft_close(void *param, int i)
 {	
 	t_coin		*tmp;
 	t_game		*game;
@@ -31,48 +31,63 @@ int	ft_close(void *param)
 	game = (t_game *)param;
 	tmp = game->env.coin.next;
 	map = game->map.matrix;
-	while (*map)
+	if (map)
 	{
-		line = *map;
-		free(line);
-		map++;
+		while (*map)
+		{
+			line = *map;
+			free(line);
+			map++;
+		}
+		free(game->map.matrix);
+		free_coin(game->env.coin.next);
 	}
-	free(game->map.matrix);
-	free_coin(game->env.coin.next);
+	if (i != 0)
+		ft_printf("\033[0;31m" " Error\n");
 	exit(0);
 }
 
-int	ft_close_f(t_game *game)
+int	ft_close_f(t_game *game, int i)
 {
 	char	**map;
 	char	*line;
 
 	map = game->map.matrix;
-	while (*map)
+	if (map)
 	{
-		line = *map;
-		free(line);
-		map++;
+		while (*map)
+		{
+			line = *map;
+			free(line);
+			map++;
+		}
+		free(game->map.matrix);
+		free_coin(game->env.coin.next);
 	}
-	free(game->map.matrix);
-	free_coin(game->env.coin.next);
+	if (i != 0)
+		ft_printf("\033[0;31m" " Error\n");
 	exit(0);
 }
 
-int	ft_close_e(t_game game)
+int	ft_close_e(t_game game, int i)
 {
 	char	**map;
 	char	*line;
 
 	map = game.map.matrix;
-	while (*map)
+	if (map)
 	{
-		line = *map;
-		free(line);
-		map++;
+		while (*map)
+		{
+			line = *map;
+			free(line);
+			map++;
+		}
+		free(game.map.matrix);
+		free_coin(game.env.coin.next);
 	}
-	free(game.map.matrix);
-	free_coin(game.env.coin.next);
+	if (i != 0)
+		ft_printf("\033[0;31m" " Error\n");
 	exit(0);
 }
 

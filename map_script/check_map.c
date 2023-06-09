@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:41:42 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/24 16:21:57 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/06/09 13:18:00 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	check(t_game game)
 	map = game.map.matrix;
 	i = game.map.height;
 	j = game.map.width;
-	if (i > j || !map)
-		ft_close_e(game);
+	if (i > j || !map || i == 0 || j == 0)
+		ft_close_e(game, 1);
 	i = 0;
 	j = 0;
 	check_env('P', game);
@@ -79,4 +79,27 @@ void	check_env(char c, t_game game)
 	}
 	if (count < 1)
 		null_error("Error missing 1 exit or 1 coin or 1 start", &game);
+}
+
+int	check_extension(char *file)
+{
+	int		count;
+	char	*tmp;
+
+	count = 4;
+	tmp = (char *)ft_strstr(file, ".ber");
+	if (tmp == NULL)
+		return (1);
+	while (count)
+	{
+		tmp++;
+		count--;
+	}
+	if ((int)*tmp != 0)
+		return (1);
+	count = open(file, O_RDONLY);
+	if (count == -1)
+		return (1);
+	close(count);
+	return (0);
 }

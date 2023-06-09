@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:28:29 by evocatur          #+#    #+#             */
-/*   Updated: 2023/05/19 13:59:34 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/06/09 11:42:05 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,6 @@ char		*ft_strjoin(char *backup, char *buff);
 char		*ft_strchr(const char *str, int ch);
 char		*ft_backup(char *backup);
 char		*ft_get_line(char *backup);
+const char* ft_strstr(const char* X, const char* Y);
 
 #endif
