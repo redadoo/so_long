@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:12:00 by evocatur          #+#    #+#             */
-/*   Updated: 2023/06/09 09:43:37 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/08/09 10:12:14 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	spawn_map(t_game game)
 				mlx_put_image_to_window(game.mlx, game.window.reference,
 					s.b_img, x * 32, y * 32);
 			x++;
-		}	
+		}
 		x = 0;
 		y++;
 	}

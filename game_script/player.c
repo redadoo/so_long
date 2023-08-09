@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:18:22 by evocatur          #+#    #+#             */
-/*   Updated: 2023/06/08 16:15:13 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/08/09 10:12:49 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_player	init_player(t_game g)
 			if (g.map.matrix[g.player.pos.y][g.player.pos.x] == 'P')
 				p.pos = g.player.pos;
 			g.player.pos.x++;
-		}	
+		}
 		g.player.pos.x = 0;
 		g.player.pos.y++;
 	}

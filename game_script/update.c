@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:10:35 by evocatur          #+#    #+#             */
-/*   Updated: 2023/06/09 12:54:31 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/08/09 10:12:59 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	update_coin(t_game *g)
 				tmp = tmp->next;
 			}
 			i++;
-		}	
+		}
 	}
 	else if (frame == ANIMATION_FRAMES * 4)
 		frame = 0;

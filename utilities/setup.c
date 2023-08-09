@@ -6,11 +6,11 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 14:35:51 by evocatur          #+#    #+#             */
-/*   Updated: 2023/06/09 09:41:08 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/08/09 10:11:45 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../so_long.h"
+#include "../so_long.h"
 
 void	init_game(t_game game)
 {

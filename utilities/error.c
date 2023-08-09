@@ -6,11 +6,11 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:42:29 by evocatur          #+#    #+#             */
-/*   Updated: 2023/06/09 13:17:03 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/08/09 10:43:39 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../so_long.h"
+#include "../so_long.h"
 
 void	null_error(char *message, void *param)
 {
@@ -22,7 +22,7 @@ void	null_error(char *message, void *param)
 }
 
 int	ft_close(void *param, int i)
-{	
+{
 	t_coin		*tmp;
 	t_game		*game;
 	char		**map;
@@ -42,7 +42,7 @@ int	ft_close(void *param, int i)
 		free(game->map.matrix);
 		free_coin(game->env.coin.next);
 	}
-	if (i != 0)
+	if (i == 1)
 		ft_printf("\033[0;31m" " Error\n");
 	exit(0);
 }

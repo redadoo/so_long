@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 13:54:23 by evocatur          #+#    #+#             */
-/*   Updated: 2023/06/09 12:52:02 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/08/09 10:34:38 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,4 +157,5 @@ void		build_array(char *arr[]);
 int			check_extension(char *file);
 int			compare(const char *X, const char *Y);
 const char* ft_strstr(const char* X, const char* Y);
+void		free_map(char **map);
 #endif

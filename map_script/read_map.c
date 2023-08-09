@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:01:35 by evocatur          #+#    #+#             */
-/*   Updated: 2023/06/09 13:08:54 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/08/09 10:41:04 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ t_map	readmap(void *param, char *file)
 		map[i] = get_next_line(fd);
 		if (map[i] == NULL)
 		{
-			free(map);
+			free_map(map);
 			ft_close(param, 1);
 		}
 		i++;
@@ -67,29 +67,18 @@ t_map	readmap(void *param, char *file)
 	return (game_map);
 }
 
-void	printmatrix(char **matrix)
+void	free_map(char **map)
 {
-	char	*str;
+	int		i;
+	char	*line;
 
-	if (!matrix)
-		return ;
-	while (*matrix)
+	i = 0;
+	while (map[i])
 	{
-		str = *matrix;
-		while (*str)
-		{
-			ft_printf("\033[0m");
-			if (*str == 'P')
-				ft_printf("\x1b[32m");
-			if (*str == 'C')
-				ft_printf("\x1b[33m");
-			if (*str == 'E')
-				ft_printf("\x1b[34m");
-			ft_printf("%c", *str);
-			str++;
-		}
-		matrix++;
+		line = map[i];
+		if (line)
+			free(line);
+		i++;
 	}
-	printf("\n");
-	return ;
+	free(map);
 }
