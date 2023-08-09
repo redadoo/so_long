@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:42:29 by evocatur          #+#    #+#             */
-/*   Updated: 2023/08/09 10:43:39 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/08/09 11:01:29 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	null_error(char *message, void *param)
 
 	game = (t_game *)param;
 	ft_printf("\033[0;31m" " Error\n %s\n" "\033[0m", message);
-	ft_close(param, 0);
+	ft_close(param, 0, NULL);
 }
 
-int	ft_close(void *param, int i)
+int	ft_close(void *param, int i, char *mes)
 {
 	t_coin		*tmp;
 	t_game		*game;
@@ -42,12 +42,12 @@ int	ft_close(void *param, int i)
 		free(game->map.matrix);
 		free_coin(game->env.coin.next);
 	}
-	if (i == 1)
-		ft_printf("\033[0;31m" " Error\n");
+	if (i == 1 && mes != NULL)
+		ft_printf("\033[0;31m" " Error %s\n", mes);
 	exit(0);
 }
 
-int	ft_close_f(t_game *game, int i)
+int	ft_close_f(t_game *game, int i, char *mes)
 {
 	char	**map;
 	char	*line;
@@ -65,11 +65,11 @@ int	ft_close_f(t_game *game, int i)
 		free_coin(game->env.coin.next);
 	}
 	if (i != 0)
-		ft_printf("\033[0;31m" " Error\n");
+		ft_printf("\033[0;31m" " Error %s\n", mes);
 	exit(0);
 }
 
-int	ft_close_e(t_game game, int i)
+int	ft_close_e(t_game game, int i, char *mes)
 {
 	char	**map;
 	char	*line;
@@ -87,7 +87,7 @@ int	ft_close_e(t_game game, int i)
 		free_coin(game.env.coin.next);
 	}
 	if (i != 0)
-		ft_printf("\033[0;31m" " Error\n");
+		ft_printf("\033[0;31m" " Error %s\n", mes);
 	exit(0);
 }
 

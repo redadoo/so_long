@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:01:35 by evocatur          #+#    #+#             */
-/*   Updated: 2023/08/09 10:41:04 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/08/09 11:01:12 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_map	readmap(void *param, char *file)
 		if (map[i] == NULL)
 		{
 			free_map(map);
-			ft_close(param, 1);
+			ft_close(param, 1, "map error");
 		}
 		i++;
 	}

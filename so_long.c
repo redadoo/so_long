@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 13:53:06 by evocatur          #+#    #+#             */
-/*   Updated: 2023/06/09 12:54:47 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/08/09 11:03:36 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	run_game(t_game game, int argc, char **argv)
 {
 	if (argc != 2 || check_extension(argv[1]) == 1)
-		ft_close_e(game, 1);
+		ft_close_e(game, 1, "file or argc");
 	game.env.coin.next = NULL;
 	game.map = readmap(&game, argv[1]);
 	check(game);

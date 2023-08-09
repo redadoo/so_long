@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:10:35 by evocatur          #+#    #+#             */
-/*   Updated: 2023/08/09 10:12:59 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/08/09 10:58:09 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	key_hook(int keycode, void *param)
 	game = (t_game *)param;
 	if (keycode == EXIT)
 	{
-		ft_close(param, 0);
+		ft_close(param, 0, NULL);
 	}
 	move_player(game, keycode);
 	return (0);
@@ -106,7 +106,7 @@ int	compare_vector(t_vector2 v1, t_vector2 v2, t_game *game, int i)
 	if (v1.x == v2.x && v1.y == v2.y)
 	{
 		if (i == 0)
-			ft_close_f(game, 0);
+			ft_close_f(game, 0, NULL);
 		else
 			return (1);
 	}

@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 13:54:23 by evocatur          #+#    #+#             */
-/*   Updated: 2023/08/09 10:34:38 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/08/09 10:52:11 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ void		null_error(char *message, void *param);
 void		check(t_game game);
 void		check_env(char c, t_game game);
 void		check_wall(char c, int i, int j,t_game game);
-int			ft_close(void *param, int i);
+int			ft_close(void *param, int i, char *mes);
 void		set_hud(t_game game);
 int			ft_update(void *param);
 int			key_hook(int keycode, void *param);
@@ -147,8 +147,8 @@ void		check_collide(t_game *game);
 t_exit		set_exit(t_game game, int x, int y);
 void		put_sprite(t_game *game, void *img, t_vector2 pos);
 t_env		add_enemy(t_game game, int x, int y, t_env env);
-int			ft_close_f(t_game *game, int i);
-int			ft_close_e(t_game game, int i);
+int			ft_close_f(t_game *game, int i, char *mes);
+int			ft_close_e(t_game game, int i, char *mes);
 void		free_coin(t_coin *coin);
 void		*give_sprite(t_game game, char*p);
 void		*give_and_put_sprite_f(t_sprite sp, t_game game, char *p, t_vector2 pos);
