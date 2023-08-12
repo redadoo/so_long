@@ -6,11 +6,36 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:41:42 by evocatur          #+#    #+#             */
-/*   Updated: 2023/08/09 10:55:32 by evocatur         ###   ########.fr       */
+/*   Updated: 2023/08/12 17:15:06 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+static	int	check_rectangular(t_game game)
+{
+	int		i;
+	int		len;
+	char	**map;
+
+	i = 0;
+	map = game.map.matrix;
+	while (map[i])
+	{
+		if (i == game.map.height - 1)
+		{
+			if ((strlen(map[i])) != strlen(map[0]) - 1)
+				return (0);
+		}
+		else
+		{
+			if (strlen(map[i]) != strlen(map[0]))
+				return (0);
+		}
+		i++;
+	}
+	return (1);
+}
 
 /* check if map inside t_game struct have no error*/
 void	check(t_game game)
@@ -22,7 +47,7 @@ void	check(t_game game)
 	map = game.map.matrix;
 	i = game.map.height;
 	j = game.map.width;
-	if (i > j || !map || i == 0 || j == 0)
+	if (i > j || !map || i == 0 || j == 0 || check_rectangular(game) == 0)
 		ft_close_e(game, 1, "map size");
 	i = 0;
 	j = 0;
@@ -53,6 +78,11 @@ void	check_wall(char c, int i, int j, t_game game)
 		if (c != '1')
 			null_error("the map is not surrounded by walls", &game);
 	}
+	if (c != '1' && c != '0' && c != 'P' && c != 'X' && c != 'C'
+		&& c != 'E' && c != '\n' && c != 0)
+	{
+		null_error("the map have strange element", &game);
+	}
 }
 
 void	check_env(char c, t_game game)
@@ -79,6 +109,8 @@ void	check_env(char c, t_game game)
 	}
 	if (count < 1)
 		null_error("Error missing 1 exit or 1 coin or 1 start", &game);
+	if (count > 1 && c == 'P')
+		null_error("too many players", &game);
 }
 
 int	check_extension(char *file)
