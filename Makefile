@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+         #
+#    By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 13:53:36 by evocatur          #+#    #+#              #
-#    Updated: 2023/08/12 17:10:16 by evocatur         ###   ########.fr        #
+#    Updated: 2024/04/12 15:54:02 by edoardo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,17 +15,13 @@ NAME = so_long
 
 SRC = $(UTILITIES_SRC) $(MAP_SRC) $(GAME_SRC)  $(GNL_SRC) $(LIBFT_SRC) $(MAIN_SRC)
 
-MAIN_SRC = *.c
+MAIN_SRC = src/*.c
 
-MAP_SRC = map_script/*.c
+MAP_SRC = src/map_script/*.c
 
-GAME_SRC = game_script/*.c
+GAME_SRC = src/game_script/*.c
 
-GNL_SRC = gnl/*.c
-
-LIBFT_SRC = ft_libft/*.c
-
-UTILITIES_SRC = utilities/*.c
+UTILITIES_SRC = src/utils/*.c
 
 OBJ = *.o
 
@@ -46,6 +42,7 @@ LINKS += -lmlx -framework OpenGL -framework AppKit
 endif
 
 FLAGS = -Wall -Wextra -Werror
+LINKS += -Llib/libft/ -Llib/vector/ -lft -l:vector.a -lm
 
 all: $(NAME)
 
@@ -76,8 +73,8 @@ big : all
 extension : all
 	@./$(NAME) map/big.bera
 
-leaks: all
-	@leaks --atExit -- ./$(NAME) map/map_0.ber
+leaks: re
+	@valgrind --track-origins=yes --leak-check=full --show-leak-kinds=all --log-file=leaks.txt ./$(NAME) map/big.ber
 
 norm:
 	@norminette $(SRC)
