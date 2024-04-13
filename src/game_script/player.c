@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:18:22 by evocatur          #+#    #+#             */
-/*   Updated: 2024/04/12 16:48:54 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/13 15:25:29 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ void	move_sprite(t_game *game, t_vector2_int oldpos)
 	game->step += 1;
 	mlx_put_image_to_window(game->mlx, game->window.reference,
 		game->player.sprite.b_img, oldpos.x * IMG_SIZE, oldpos.y * IMG_SIZE);
+	mlx_put_image_to_window(game->mlx, game->window.reference,
+		game->player.sprite.b_img,game->player.pos.x * IMG_SIZE, game->player.pos.y * IMG_SIZE);
 	mlx_put_image_to_window(game->mlx, game->window.reference,
 		game->player.sprite.img, game->player.pos.x * IMG_SIZE,
 		game->player.pos.y * IMG_SIZE);

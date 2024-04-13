@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:10:35 by evocatur          #+#    #+#             */
-/*   Updated: 2024/04/12 17:00:39 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/13 15:47:33 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	check_collide(t_game *g)
 		tmp1 = g->env.enemy.next;
 		while (tmp1 != NULL)
 		{
-			(void)compare_vector(tmp1->pos, g->player.pos, 0, g);
+			compare_vector(tmp1->pos, g->player.pos, 0, g);
 			tmp1 = tmp1->next;
 		}
 	}
@@ -98,7 +98,7 @@ int compare_vector(t_vector2_int v1, t_vector2_int v2, int flag, t_game *game)
 	int	res;
 
 	res = compare_vector2_int(v1,v2);
-	if (res && flag == 1)
+	if (res && flag == 0)
 		ft_close(game,NULL);
 	return (res);
 }

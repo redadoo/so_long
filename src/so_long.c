@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 13:53:06 by evocatur          #+#    #+#             */
-/*   Updated: 2024/04/13 01:24:56 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/13 14:53:13 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	run_game(t_game *game)
 	mlx_loop_hook(game->mlx, ft_update, game);
 	mlx_key_hook(game->window.reference, *key_hook, game);
 	mlx_hook(game->window.reference, 17, 1L << 0, *ft_close, game);
-	mlx_loop(game->mlx); 
+	mlx_loop(game->mlx);
 }
 
 int	main(int argc, char**argv)

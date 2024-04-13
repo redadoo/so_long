@@ -6,7 +6,7 @@
 #    By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 13:53:36 by evocatur          #+#    #+#              #
-#    Updated: 2024/04/12 15:54:02 by edoardo          ###   ########.fr        #
+#    Updated: 2024/04/13 14:52:31 by edoardo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,10 +58,10 @@ $(OBJ): $(SRC)
 
 exe: all
 	@echo "     - Executing $(NAME)... \n"
-	@./$(NAME)
+	@./$(NAME) 	map/map_0.ber
 	@echo "\n     - Done -"
 
-play0: all
+play: all
 	@./$(NAME) map/map_0.ber
 
 error : all
@@ -74,7 +74,7 @@ extension : all
 	@./$(NAME) map/big.bera
 
 leaks: re
-	@valgrind --track-origins=yes --leak-check=full --show-leak-kinds=all --log-file=leaks.txt ./$(NAME) map/big.ber
+	@valgrind --track-origins=yes --leak-check=full --show-leak-kinds=all --log-file=leaks.txt ./$(NAME) map/map_0.ber
 
 norm:
 	@norminette $(SRC)
